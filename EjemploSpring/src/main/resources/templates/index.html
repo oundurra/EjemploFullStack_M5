@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+	<script src="/js/jquery-3.6.0.js"></script>
+	<script src="/js/bootstrap.js"></script>
+	<script src="/js/department.js"></script>
+	
+	
+	<div class="container-fluid">
+		<div th:replace="fragments/tables-manager :: tables-manager-title"></div>
+		<div th:replace="fragments/tables-manager :: tables-manager-menu"></div>
+		
+		<div class="form-group">
+	  		<label for="message">Prueba de Controlador</label>
+	  		<input type="text" class="form-control" id="message">
+	  		<button type="button" class="btn btn-primary" onclick="list()">Consultar</button>
+	  	</div>
+	</div>
+</body>
+</html>

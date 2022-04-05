@@ -11,9 +11,9 @@ public class WebAppController {
 		return("index");
 	}
 	
-	@RequestMapping("/employees")
-	public @ResponseBody String getEmployees() {
-		return("employees");
+	@RequestMapping("/departments_page")
+	public String getDepartments() {
+		return("departments");
 	}
 	
 }

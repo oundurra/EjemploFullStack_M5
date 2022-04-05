@@ -16,7 +16,7 @@ public class DepartmentsDAOImpl implements DepartmentsDAO {
 	private String insert = "INSERT INTO departments VALUES (?,?)";
 	private String update = "UPDATE departments SET dept_name=? WHERE dept_no=?";
 	private String select = "SELECT * FROM departments WHERE dept_no=?";
-	private String delete = "DELETE departments WHERE dept_no=?";
+	private String delete = "DELETE FROM departments WHERE dept_no=?";
 	private String list = "SELECT * FROM departments";
 	
 	@Autowired
@@ -28,31 +28,32 @@ public class DepartmentsDAOImpl implements DepartmentsDAO {
 
 	@Override
 	public int insert(DepartmentsDTO departmentsDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update(insert, new Object[]{departmentsDTO.getDept_no(),departmentsDTO.getDept_name()});
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public DepartmentsDTO get(String dept_no) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.queryForObject(select, new Object[]{dept_no}, BeanPropertyRowMapper.newInstance(DepartmentsDTO.class));
 	}
 
 	@Override
 	public int update(DepartmentsDTO departmentsDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update(update, new Object[]{departmentsDTO.getDept_name(), departmentsDTO.getDept_no()});
 	}
 
 	@Override
 	public int delete(String dept_no) {
-		// TODO Auto-generated method stub
-		return 0;
+		int vret = 0;
+		if (jdbcTemplate.update(delete, new Object[]{dept_no}) == 1) {
+			vret = 1;
+		}
+		return vret;
 	}
 
 	@Override
 	public List<DepartmentsDTO> list() {
-		List<DepartmentsDTO> listDepartments = jdbcTemplate.query(list,BeanPropertyRowMapper.newInstance(DepartmentsDTO.class));
+		List<DepartmentsDTO> listDepartments = jdbcTemplate.query( list,BeanPropertyRowMapper.newInstance(DepartmentsDTO.class));
 		return listDepartments;
 	}
 

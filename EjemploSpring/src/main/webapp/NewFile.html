@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="js/bootstrap-table.js"></script>
+<div th:replace="fragments/header :: header">&nnsp;</div>
+<div class="container" style="background-color: skyblue;">
+<div class="panel-body">
+<h3>Curso FullStack Java Trainee</h3>
+<h4>Ejemplo: SpringBoot Application</h4>
+<h6><strong>Vista:</strong>Bootstrap - JQuery - Thymleaf</h6>
+<h6><strong>Controlador:</strong>SpringBoot Servlet</h6>
+<h6><strong>Modelo:</strong>DAO/DTO - JDBCTemplate</h6>
+
+<div class="table-responsive" id="tableDivContainer">
+<table class="table table-condensed" id="departmentsTable" data-toggle="table">
+<thead>
+<tr>
+<th data-field="dept_no">Nº</th>
+<th data-field="dept_name">Nombre</th>
+</tr>
+</thead>
+</table>
+</div>
+
+
+</div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+$.ajax({
+type : "post",
+url : "/department/list",
+success : function(response) {
+$("#departmentsTable").bootstrapTable('load',response);
+}
+});
+});
+
+</script>
+
+</body>
+</html>

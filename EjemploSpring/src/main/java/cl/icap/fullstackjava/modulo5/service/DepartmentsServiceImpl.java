@@ -17,26 +17,22 @@ public class DepartmentsServiceImpl implements DepartmentsService {
 
 	@Override
 	public int insert(DepartmentsDTO departmentsDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		return departmentsDAO.insert(departmentsDTO);
 	}
 
 	@Override
 	public DepartmentsDTO get(String dept_no) {
-		// TODO Auto-generated method stub
-		return null;
+		return departmentsDAO.get(dept_no);
 	}
 
 	@Override
 	public int update(DepartmentsDTO departmentsDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		return departmentsDAO.update(departmentsDTO);
 	}
 
 	@Override
 	public int delete(String dept_no) {
-		// TODO Auto-generated method stub
-		return 0;
+		return departmentsDAO.delete(dept_no);
 	}
 
 	@Override

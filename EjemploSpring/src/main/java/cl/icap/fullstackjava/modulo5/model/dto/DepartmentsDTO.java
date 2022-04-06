@@ -5,8 +5,8 @@ public class DepartmentsDTO {
 	private String dept_name;
 	
 	public DepartmentsDTO() {
+		// TODO Auto-generated constructor stub
 	}
-		
 
 	public DepartmentsDTO(String dept_no, String dept_name) {
 		this.dept_no = dept_no;
@@ -29,4 +29,7 @@ public class DepartmentsDTO {
 		this.dept_name = dept_name;
 	}
 	
+	
+	
+
 }

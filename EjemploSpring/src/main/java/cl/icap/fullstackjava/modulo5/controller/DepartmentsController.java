@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cl.icap.fullstackjava.modulo5.model.dto.DepartmentsDTO;
+import cl.icap.fullstackjava.modulo5.model.entity.Departments;
 import cl.icap.fullstackjava.modulo5.service.DepartmentsService;
 
 @Controller
@@ -20,10 +20,10 @@ public class DepartmentsController {
 	DepartmentsService departmentsService;
 	
 	@RequestMapping("/list") 
-	public @ResponseBody List<DepartmentsDTO> list(HttpServletRequest request, HttpServletResponse response) {
+	public @ResponseBody List<Departments> list(HttpServletRequest request, HttpServletResponse response) {
 		return departmentsService.list();
 	}
-	
+	/*
 	@RequestMapping("/select") 
 	public @ResponseBody DepartmentsDTO select(HttpServletRequest request, HttpServletResponse response) {
 		return departmentsService.get(request.getParameter("dept_no"));
@@ -43,4 +43,5 @@ public class DepartmentsController {
 	public @ResponseBody int insert(HttpServletRequest request, HttpServletResponse response) {
 		return departmentsService.insert(new DepartmentsDTO(request.getParameter("dept_no"),request.getParameter("dept_name")));
 	}
+	*/
 }

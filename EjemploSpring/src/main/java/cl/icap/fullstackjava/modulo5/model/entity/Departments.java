@@ -1,14 +1,19 @@
-package cl.icap.fullstackjava.modulo5.model.dto;
+package cl.icap.fullstackjava.modulo5.model.entity;
 
-public class DepartmentsDTO {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Departments {
+	@Id
 	private String dept_no;
 	private String dept_name;
 	
-	public DepartmentsDTO() {
+	public Departments() {
 	}
 		
 
-	public DepartmentsDTO(String dept_no, String dept_name) {
+	public Departments(String dept_no, String dept_name) {
 		this.dept_no = dept_no;
 		this.dept_name = dept_name;
 	}

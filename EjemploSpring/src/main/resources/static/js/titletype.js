@@ -42,6 +42,29 @@ function del(){
 	});
 }
 
+function updateJSON(){
+	dataJSON = {title_no: $("#title_no").val(), title_name: $("#title_name").val()};
+	
+	$.ajax({
+		type : "POST",
+		headers: { 
+        	'Accept': 'application/json',
+        	'Content-Type': 'application/json' 
+    	},
+		url : "/titletype/updateJayson",
+		dataType: "json",
+		data: JSON.stringify(dataJSON),
+		success : function(response) {
+			if (response == 1) {
+				alert("Se actualizó el registro");
+				list();
+				$("#myModal").modal("hide");
+			}			
+		}
+	});
+}
+
+
 function update(){
 	$.ajax({
 		type : "post",

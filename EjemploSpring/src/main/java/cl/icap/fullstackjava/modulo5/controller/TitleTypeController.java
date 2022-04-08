@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import cl.icap.fullstackjava.modulo5.model.entity.TitleType;
 import cl.icap.fullstackjava.modulo5.service.TitleTypeService;
@@ -29,6 +30,15 @@ public class TitleTypeController {
 		if (titleTypeService.update(new TitleType(
 										Integer.parseInt(request.getParameter("titleNo"))
 										,request.getParameter("titleName"))) != null) {
+			vret = 1;
+		}
+		return vret;
+	}
+	
+	@PostMapping("/titletype/updateJayson") 
+	public int updateJayson(@RequestBody TitleType titleType) {
+		int vret = 0;
+		if (titleTypeService.update(titleType) != null) {
 			vret = 1;
 		}
 		return vret;

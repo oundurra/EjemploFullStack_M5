@@ -8,5 +8,6 @@ public interface DepartmentsService{
 	public Departments insert(Departments departments);
 	public Departments update(Departments departments);
 	public List<Departments> list();
+	public List<Departments> listOrderByDeptName();
 	public int delete(String dept_no);
 }

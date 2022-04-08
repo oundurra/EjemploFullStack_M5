@@ -24,6 +24,11 @@ public class DepartmentsController {
 		return departmentsService.list();
 	}
 	
+	@RequestMapping("/listOrderByDeptName") 
+	public @ResponseBody List<Departments> listOrderByDeptName(HttpServletRequest request, HttpServletResponse response) {
+		return departmentsService.listOrderByDeptName();
+	}
+	
 	@RequestMapping("/update") 
 	public @ResponseBody int update(HttpServletRequest request, HttpServletResponse response) {
 		int vret = 0;

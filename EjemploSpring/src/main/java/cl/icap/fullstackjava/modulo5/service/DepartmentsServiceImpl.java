@@ -51,5 +51,14 @@ public class DepartmentsServiceImpl implements DepartmentsService {
 	@Override
 	public List<Departments> list() {
 		return departmentsRepository.findAll();
+
+		
 	}
+	
+	@Override
+	public List<Departments> listOrderByDeptName() {
+		return departmentsRepository.findAllByOrderByDeptname();
+		
+	}
+	
 }

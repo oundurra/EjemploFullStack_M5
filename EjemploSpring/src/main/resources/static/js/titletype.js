@@ -1,13 +1,12 @@
 function list(){
 	$.ajax({
-		type : "post",
-		//url : "/department/list",
-		url : "/department/listOrderByDeptName",
+		type : "get",
+		url : "/titletype",
 		success : function(response) {
-			$("#departmentsTable").bootstrapTable('load',response);
-			$("#departmentsTable tbody").on('click','tr',function() {
-				$("#dept_no").val($(this).find("td:eq(0)").text());
-				$("#dept_name").val($(this).find("td:eq(1)").text());
+			$("#titletypeTable").bootstrapTable('load',response);
+			$("#titletypeTable tbody").on('click','tr',function() {
+				$("#title_no").val($(this).find("td:eq(0)").text());
+				$("#title_name").val($(this).find("td:eq(1)").text());
 				$("#btn_group_old").show();
 				$("#btn_group_new").hide();
 				$("#myModal").modal("show");
@@ -18,11 +17,11 @@ function list(){
 
 function select(){
 	$.ajax({
-		type : "post",
-		url : "/department/select",
-		data: "dept_no=" + $("#dept_no").val(),
+		type : "get",
+		url : "/titletype/select",
+		data: "titleNo=" + $("#title_no").val(),
 		success : function(response) {
-			$("#dept_name").val(response.dept_name);
+			$("#title_name").val(response.dept_name);
 		}
 	});
 }
@@ -30,8 +29,8 @@ function select(){
 function del(){
 	$.ajax({
 		type : "post",
-		url : "/department/delete",
-		data: "dept_no=" + $("#dept_no").val(),
+		url : "/titletype/delete",
+		data: "titleNo=" + $("#title_no").val(),
 		success : function(response) {
 			if (response == 1) {
 				alert("Se eliminó el registro");
@@ -46,10 +45,10 @@ function del(){
 function update(){
 	$.ajax({
 		type : "post",
-		url : "/department/update",
+		url : "/titletype/update",
 		data: {
-			dept_no:$("#dept_no").val(),
-			dept_name:$("#dept_name").val()
+			titleNo:$("#title_no").val(),
+			titleName:$("#title_name").val()
 			},
 		success : function(response) {
 			if (response == 1) {
@@ -62,8 +61,8 @@ function update(){
 }
 
 function add() {
-	$("#dept_no").val("");
-	$("#dept_name").val("");
+	$("#title_no").val("");
+	$("#title_name").val("");
 	$("#myModal").modal("show");
 	$("#btn_group_old").hide();
 	$("#btn_group_new").show();
@@ -73,10 +72,10 @@ function add() {
 function insert(){
 	$.ajax({
 		type : "post",
-		url : "/department/insert",
+		url : "/titletype/insert",
 		data: {
-			dept_no:$("#dept_no").val(),
-			dept_name:$("#dept_name").val()
+			titleNo:$("#title_no").val(),
+			titleName:$("#title_name").val()
 			},
 		success : function(response) {
 			if (response == 1) {

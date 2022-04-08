@@ -10,7 +10,6 @@ function list(){
 				$("#btn_group_old").show();
 				$("#btn_group_new").hide();
 				$("#myModal").modal("show");
-
 			});
 		}
 	});

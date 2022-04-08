@@ -15,30 +15,41 @@ public class DepartmentsServiceImpl implements DepartmentsService {
 	public DepartmentsServiceImpl() {
 		// TODO Auto-generated constructor stub
 	}
-/*
+
 	@Override
-	public int insert(DepartmentsDTO departmentsDTO) {
-		return departmentsDAO.insert(departmentsDTO);
+	public Departments get(String dept_no) {
+		return departmentsRepository.findById(dept_no).get();
 	}
 
 	@Override
-	public DepartmentsDTO get(String dept_no) {
-		return departmentsDAO.get(dept_no);
+	public Departments insert(Departments departments) {
+		return departmentsRepository.save(departments);
 	}
-
-	@Override
-	public int update(DepartmentsDTO departmentsDTO) {
-		return departmentsDAO.update(departmentsDTO);
-	}
-
+	
+	
 	@Override
 	public int delete(String dept_no) {
-		return departmentsDAO.delete(dept_no);
+		int vret = 0;
+		
+		try {
+			departmentsRepository.deleteById(dept_no);
+			vret = 1;
+		} catch(Exception e) {
+			e.printStackTrace();
+			vret = 0;
+		}
+		
+		return vret;
 	}
-*/
+
+	
+	@Override
+	public Departments update(Departments departments) {
+		return departmentsRepository.save(departments);
+	}
+	
 	@Override
 	public List<Departments> list() {
 		return departmentsRepository.findAll();
 	}
-
 }

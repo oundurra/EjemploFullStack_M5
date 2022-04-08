@@ -23,25 +23,35 @@ public class DepartmentsController {
 	public @ResponseBody List<Departments> list(HttpServletRequest request, HttpServletResponse response) {
 		return departmentsService.list();
 	}
-	/*
-	@RequestMapping("/select") 
-	public @ResponseBody DepartmentsDTO select(HttpServletRequest request, HttpServletResponse response) {
-		return departmentsService.get(request.getParameter("dept_no"));
+	
+	@RequestMapping("/update") 
+	public @ResponseBody int update(HttpServletRequest request, HttpServletResponse response) {
+		int vret = 0;
+		if (departmentsService.update(new Departments(request.getParameter("dept_no"),request.getParameter("dept_name"))) != null) {
+			vret = 1;
+		}
+		return vret;
 	}
 	
 	@RequestMapping("/delete") 
 	public @ResponseBody int delete(HttpServletRequest request, HttpServletResponse response) {
 		return departmentsService.delete(request.getParameter("dept_no"));
 	}
-	
-	@RequestMapping("/update") 
-	public @ResponseBody int update(HttpServletRequest request, HttpServletResponse response) {
-		return departmentsService.update(new DepartmentsDTO(request.getParameter("dept_no"),request.getParameter("dept_name")));
-	}
-	
+
 	@RequestMapping("/insert") 
 	public @ResponseBody int insert(HttpServletRequest request, HttpServletResponse response) {
-		return departmentsService.insert(new DepartmentsDTO(request.getParameter("dept_no"),request.getParameter("dept_name")));
+		int vret = 0;
+		if (departmentsService.insert(new Departments(request.getParameter("dept_no"),request.getParameter("dept_name"))) != null) {
+			vret = 1;
+		};
+		return vret;
 	}
-	*/
+
+	
+	
+	@RequestMapping("/select") 
+	public @ResponseBody Departments select(HttpServletRequest request, HttpServletResponse response) {
+		return departmentsService.get(request.getParameter("dept_no"));
+	}
+
 }

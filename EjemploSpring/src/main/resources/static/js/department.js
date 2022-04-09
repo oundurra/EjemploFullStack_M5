@@ -1,8 +1,10 @@
 function list(){
+	var token = $("meta[name='_csrf']").attr("content");
+
 	$.ajax({
 		type : "post",
-		//url : "/department/list",
-		url : "/department/listOrderByDeptName",
+		headers : {"X-CSRF-TOKEN" : token},
+		url : "/department/list",
 		success : function(response) {
 			$("#departmentsTable").bootstrapTable('load',response);
 			$("#departmentsTable tbody").on('click','tr',function() {
@@ -17,8 +19,11 @@ function list(){
 }
 
 function select(){
+	var token = $("meta[name = '_csrf']").attr("content");
+	
 	$.ajax({
 		type : "post",
+		headers : {"X-CSRF-TOKEN" : token},
 		url : "/department/select",
 		data: "dept_no=" + $("#dept_no").val(),
 		success : function(response) {
@@ -28,8 +33,11 @@ function select(){
 }
 
 function del(){
+	var token = $("meta[name = '_csrf']").attr("content");
+
 	$.ajax({
 		type : "post",
+		headers : {"X-CSRF-TOKEN" : token},
 		url : "/department/delete",
 		data: "dept_no=" + $("#dept_no").val(),
 		success : function(response) {
@@ -44,8 +52,11 @@ function del(){
 }
 
 function update(){
+	var token = $("meta[name = '_csrf']").attr("content");
+
 	$.ajax({
 		type : "post",
+		headers : {"X-CSRF-TOKEN" : token},
 		url : "/department/update",
 		data: {
 			dept_no:$("#dept_no").val(),
@@ -71,8 +82,11 @@ function add() {
 
 
 function insert(){
+	var token = $("meta[name = '_csrf']").attr("content");
+
 	$.ajax({
 		type : "post",
+		headers : {"X-CSRF-TOKEN" : token},
 		url : "/department/insert",
 		data: {
 			dept_no:$("#dept_no").val(),
